@@ -1,12 +1,16 @@
 import React from 'react';
+import 'antd/dist/antd.css';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Home from './pages/Home';
 import GlobalStyles from './globalStyles';
+import GlobalContext from './data/contexts/GlobalContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <GlobalStyles />
-    <App />
+    <GlobalContext>
+      <Home />
+    </GlobalContext>
   </React.StrictMode>,
   document.getElementById('root')
 );
