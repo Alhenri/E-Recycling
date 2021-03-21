@@ -15,10 +15,12 @@ export default createGlobalStyle`
   }
   .App{
     background-image: url(${bgimg});
-    font-family: 'Playfair Display', serif;
+    font-family: 'Syne Mono', monospace;
+    font-size: 16px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    overflow: auto;
   }
 `;

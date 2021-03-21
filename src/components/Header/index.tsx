@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Container, ButtonContainer, ButtonStyled } from './styles';
+import { Container, ButtonContainer, ButtonStyled, MenuSelect, LinhaH } from './styles';
 
 import { GlobalContext } from '../../data/contexts/GlobalContext';
 
@@ -16,11 +16,23 @@ const Header: React.FC<IProps> = () => {
     <Container>
       <img height={50} src={logo} alt="E-Recycling"/>
       <ButtonContainer>
-        {!context.isMobile && (
+        {!context.isMobile ? (
           <>
           <ButtonStyled>Pontos de coleta</ButtonStyled>
           <ButtonStyled>Criar ponto de coleta</ButtonStyled>
           </>
+        ):(
+          <MenuSelect>
+            <LinhaH />
+            <LinhaH />
+            <LinhaH />
+            <div className="menu-item">
+              <span className="item-container">
+                <ButtonStyled>Pontos de coleta</ButtonStyled>
+                <ButtonStyled>Criar ponto de coleta</ButtonStyled>
+              </span>
+            </div>
+          </MenuSelect>
         )}
       </ButtonContainer>
     </Container>

@@ -1,0 +1,17 @@
+{
+  "title": "E-recycle",
+  "paragraphs": [
+    {
+      "subtitle": "Apresentação",
+      "text": "Olá, seja bem vinda(o) ao e-recycle, a plataforma que ajudará você a encontrar pontos de coleta próximo a sua casa!"
+    },
+    {
+      "subtitle": "Pontos de coleta",
+      "text": "Os pontos de coleta são lugares geralmente próximos a você onde se pode despejar seu lixo para reciclagem. Nesses locais há coletas periodicas realizadas por terceiros, contribuindo com a nossa causa você ajuda o nosso planeta a continuar saudável e garantir a qualidade de vida as proximas gerações."
+    },
+    {
+      "subtitle": "Crie um ponto de coleta!",
+      "text": "Aqui na plataforma você pode criar um ponto de coleta, definir as regras da coleta como, por exemplo, conteúdo a ser coletado, organização, periodos de coleta e etc."
+    }
+  ]
+}
