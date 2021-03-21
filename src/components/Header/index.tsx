@@ -1,15 +1,16 @@
 import React, { useContext } from 'react';
 import { Container, ButtonContainer, ButtonStyled, MenuSelect, LinhaH } from './styles';
-
 import { GlobalContext } from '../../data/contexts/GlobalContext';
-
 import logo from '../../assets/logo.png'
+import { Link } from 'react-router-dom';
 
 interface IProps{
-  title?:string
+  title?:string;
+  toButtonLeft: string;
+  toButtonRight: string;
 }
 
-const Header: React.FC<IProps> = () => {
+const Header: React.FC<IProps> = ({ toButtonLeft, toButtonRight }) => {
   const { context } = useContext(GlobalContext);
 
   return (
@@ -18,8 +19,12 @@ const Header: React.FC<IProps> = () => {
       <ButtonContainer>
         {!context.isMobile ? (
           <>
-          <ButtonStyled>Pontos de coleta</ButtonStyled>
-          <ButtonStyled>Criar ponto de coleta</ButtonStyled>
+          <Link to={toButtonLeft}>
+            <ButtonStyled>Pontos de coleta</ButtonStyled>
+          </Link>
+          <Link to={toButtonRight}>
+            <ButtonStyled>Criar ponto de coleta</ButtonStyled>
+          </Link>
           </>
         ):(
           <MenuSelect>
