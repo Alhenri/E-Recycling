@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 
 import GlobalStyles from './globalStyles';
 import GlobalContext from './data/contexts/GlobalContext';
+import LocationContext from './data/contexts/CollectionPoint';
 
 import Home from './pages/Home';
 import ColletionPoints from './pages/CollectionPoints';
@@ -15,7 +16,11 @@ ReactDOM.render(
     <GlobalContext>
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/search-point" exact component={ColletionPoints} />
+        <Route path="/search-point" exact>
+          <LocationContext>
+            <ColletionPoints />
+          </LocationContext>
+        </Route>
         <Route component={NotFound} />
       </Switch>
     </GlobalContext>

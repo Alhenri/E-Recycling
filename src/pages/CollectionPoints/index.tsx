@@ -1,14 +1,19 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useState } from 'react';
 
 import Map from '../../components/Map';
 import PageDefault from '../../components/PageDefault';
 import Content from '../../components/Content';
-import { GlobalContext } from '../../data/contexts/GlobalContext';
+import { GlobalContext, LocationContext } from '../../data/contexts';
+import getLocal from '../../services/getLocal';
 
-import { Container, InfoPoint, MapContainer } from './styles';
+import { Container, InfoPoint, MapContainer, Button } from './styles';
+import { PointProps } from './interfaces';
 
 const CollectionPoints: React.FC = () => {
   const { context } = useContext(GlobalContext);
+  const { location, setLocation } = useContext(LocationContext);
+  const [point, setPoint] = useState<PointProps>({ lat: 0, lng: 0, name: '' });
+
   const height = 0.8 * context.height;
   const width = 0.8 * context.width;
 
@@ -17,9 +22,24 @@ const CollectionPoints: React.FC = () => {
       <Content width={width} height={height} marginTop={0}>
         <Container>
           <MapContainer className="map-area">
-            <Map width={width/2} height={height} />
+            <Map
+              width={width / 2}
+              height={height}
+              setPoint={setPoint}
+              latitude={location.position.lat}
+              longitude={location.position.lng}
+            />
           </MapContainer>
-          <InfoPoint className="point-info"></InfoPoint>
+          <InfoPoint className="point-info">
+            <h3>{point.name}</h3>
+            <div className="Info"></div>
+            <div className="button-container">
+              <Button onClick={() => getLocal(location, setLocation)}>
+                Locais proximos
+              </Button>
+              {/* <Button>a</Button> */}
+            </div>
+          </InfoPoint>
         </Container>
       </Content>
     </PageDefault>
