@@ -28,6 +28,10 @@ export const InfoPoint = styled.div`
     justify-content: space-around;
     margin-bottom: 20px;
   }
+
+  .info{
+    text-align: justify;
+  }
 `;
 
 export const Button = styled.div`

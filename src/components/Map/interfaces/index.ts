@@ -9,5 +9,6 @@ export interface MapProps {
   width: number;
   latitude: number;
   longitude: number;
+  zoom: number;
   setPoint: React.Dispatch<React.SetStateAction<PointProps>>;
 }

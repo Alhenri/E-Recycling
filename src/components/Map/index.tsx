@@ -14,13 +14,14 @@ const Map: React.FC<MapProps> = ({
   setPoint,
   latitude,
   longitude,
+  zoom
 }) => {
   const [viewport, setViewport] = useState({
     height,
     width,
     latitude,
     longitude,
-    zoom: 5,
+    zoom,
   });
 
   console.log(longitude, latitude)
@@ -30,8 +31,8 @@ const Map: React.FC<MapProps> = ({
   }, [height, width]);
 
   useEffect(() => {
-    setViewport({ ...viewport, latitude, longitude });
-  }, [latitude, longitude]);
+    setViewport({ ...viewport, latitude, longitude, zoom });
+  }, [latitude, longitude, zoom]);
 
   const MemorizedMarkers = useMemo(() => {
     return (

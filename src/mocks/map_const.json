@@ -1,22 +1,30 @@
 [
   {
     "name": "Recife",
+    "image": "https://www.submarinoviagens.com.br/media/15886235/recife-marco-zero-chao-colorido.jpg",
     "lng": -34.91717548860881,
-    "lat": -8.06430706859617
+    "lat": -8.06430706859617,
+    "time": "07:00 terça a quinta"
   },
   {
     "name": "Jaboatão dos guararapes",
+    "image": "https://www.thecities.com.br/uploads/jpg_thecities_1172461484020151218210223.jpg",
     "lng": -34.9365384199029,
-    "lat": -8.16977057429157
+    "lat": -8.16977057429157,
+    "time": "08:00 segunda a sexta"
   },
   {
     "name": "Camaragibe",
+    "image": "https://farm8.staticflickr.com/7889/47177374881_e52f0a868b_z.jpg",
     "lng": -34.97203023744263,
-    "lat": -8.020541882216621
+    "lat": -8.020541882216621,
+    "time": "14:00 aos sábados"
   },
   { 
     "name": "Paulista",
+    "image": "https://www.paulista.pe.gov.br/site/app/webroot/files/arquivos/060920191320040000000.jpg",
     "lng": -34.88395794947424,
-    "lat": -7.938963451016176
+    "lat": -7.938963451016176,
+    "time": "17:00 terça e quinta"
   }
 ]
