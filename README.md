@@ -1,46 +1,22 @@
-# Getting Started with Create React App
+# E-recycle
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="https://media.giphy.com/media/GQwRL4GkTwW2OGfwWH/giphy.gif" width="420" height="300"/>
 
-## Available Scripts
+Este projeto está sendo criado utilizando o ReactJS com TypeScript, Context-API, React Hooks e styled-components. <b>ATENÇÃO: OS LOCAIS DE COLETA MOSTRADOS SÃO APENAS FICTICIOS (ATÉ O MOMENTO).</b>
 
-In the project directory, you can run:
+### `Funcionalidades`
 
-### `yarn start`
+1. Sua principal funcionalidade é a busca de locais que estão disponiveis a receber lixos reciclaveis. Ele mostrará o dia e hora que as coletas serão realizadas, assim como mostrará a localização do mapa e o endereço dos locais cadastrados mais próximos de você.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### `Construção`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. Aplicação construida utilizando o framework [ReactJS](https://pt-br.reactjs.org) também conta com a biblioteca
+styled-components para a criação dos estilos e a react-map-gl na manipulação dos mapas
 
-### `yarn test`
+2. A aplicação trata-se de uma página [SPA](https://en.wikipedia.org/wiki/Single-page_application) pois a navegação entre
+suas páginas não necessita do recarregamento completo da página.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `Navegação`
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Página inicial: A página inicial da uma breve introdução ao objetivo da aplicação. No menu no canto superior direito é possível alternar entre as página e clicar no simbolo de HOME para retornar a pagina inicial
+2. Pontos de coleta: Ao clicar no botão, a página será carregada junto com o mapa onde mostrará os pontos disponiveis e um botão para buscar pontos próximos a sua localização (atualmente só há pontos ficticios proximos à Recife), quando clicar em um ponto, será carregada as informações sobre ele, tais como, imagem, localização, e regras de funcionamento.

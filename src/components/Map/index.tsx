@@ -6,7 +6,7 @@ import { RestOutlined } from '@ant-design/icons';
 import env from '../../services/env';
 import data_mock from '../../mocks/map_const.json';
 
-import { MapProps, PointProps } from './interfaces';
+import { MapProps } from './interfaces';
 
 const Map: React.FC<MapProps> = ({
   height,
