@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { HomeOutlined } from '@ant-design/icons';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { PointerEvent } from 'react-map-gl';
 
 import { GlobalContext } from '../../data/contexts';

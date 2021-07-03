@@ -24,9 +24,9 @@ const Home: React.FC = () => {
         marginTop={70}
       >
         <h1>{data.title}</h1>
-        {data.paragraphs.map((area) => {
+        {data.paragraphs.map((area, index) => {
           return (
-            <TextArea>
+            <TextArea key={index}>
               <h2>{area.subtitle}</h2>
               <p>{area.text}</p>
             </TextArea>
