@@ -8,6 +8,12 @@ export const Container = styled.div`
   grid-template-areas: 'map-area point-info';
   grid-template-columns: 50% 50%;
   grid-template-rows: 100%;
+
+  @media (max-width: 600px) {
+    grid-template-areas: 'map-area' 'point-info';
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 100%;
+  }
 `;
 
 export const MapContainer = styled.div``;
@@ -19,17 +25,18 @@ export const InfoPoint = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
+  padding: 0 15px;
 
   h3 {
     margin-top: 15px;
   }
-  .button-container{
+  .button-container {
     display: flex;
     justify-content: space-around;
     margin-bottom: 20px;
   }
 
-  .info{
+  .info {
     text-align: justify;
   }
 `;

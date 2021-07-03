@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
-
-import { HomeOutlined } from '@ant-design/icons';
+import { HomeOutlined, RestOutlined } from '@ant-design/icons';
 
 import Map from '../../components/Map';
 import PageDefault from '../../components/PageDefault';
@@ -47,14 +46,13 @@ const CollectionPoints: React.FC = () => {
           </MapContainer>
           <InfoPoint className="point-info">
             <h3>{point.name}</h3>
-            {point.name !== '' && (
+            {point.name !== '' ? (
               <>
                 {point.image && (
                   <img
                     src={point.image}
                     alt="not found"
-                    width={0.3 * width}
-                    height={0.4 * height}
+                    style={{ maxWidth: '80%', maxHeight: '50%' }}
                   />
                 )}
                 <div className="Info">
@@ -63,6 +61,11 @@ const CollectionPoints: React.FC = () => {
                   }`}</h4>
                 </div>
               </>
+            ) : (
+              <h3>
+                Selecione um local <RestOutlined style={{ color: 'green' }} />{' '}
+                no mapa
+              </h3>
             )}
             <div className="button-container">
               <Button
@@ -73,7 +76,6 @@ const CollectionPoints: React.FC = () => {
               >
                 Locais proximos
               </Button>
-              {/* <Button>a</Button> */}
             </div>
           </InfoPoint>
         </Container>

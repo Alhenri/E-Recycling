@@ -18,8 +18,6 @@ const Map: React.FC<MapProps> = ({
   zoom,
 }) => {
   const [viewport, setViewport] = useState({
-    height,
-    width,
     latitude,
     longitude,
     zoom,
@@ -38,10 +36,6 @@ const Map: React.FC<MapProps> = ({
 
     requestData();
   }, []);
-
-  useEffect(() => {
-    setViewport({ ...viewport, height, width });
-  }, [height, width]);
 
   useEffect(() => {
     setViewport({ ...viewport, latitude, longitude, zoom });
@@ -84,6 +78,8 @@ const Map: React.FC<MapProps> = ({
   return (
     <ReactMapGL
       {...viewport}
+      height="100%"
+      width="100%"
       mapboxApiAccessToken={env.MAP_TOKEN}
       onViewportChange={setViewport}
       mapStyle="mapbox://styles/sonero/ckj1lyxwt0y5019p8bmgn205w"
