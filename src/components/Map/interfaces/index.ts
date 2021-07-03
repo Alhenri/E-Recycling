@@ -12,3 +12,11 @@ export interface MapProps {
   zoom: number;
   setPoint: React.Dispatch<React.SetStateAction<PointProps>>;
 }
+
+export interface IMarker {
+  name: string;
+  image: string;
+  lng: number;
+  lat: number;
+  time: string;
+}

@@ -2,11 +2,12 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
 import { RestOutlined } from '@ant-design/icons';
+import Loading from 'react-loading';
 
 import env from '../../services/env';
-import data_mock from '../../mocks/map_const.json';
+import getMarkers from './api/getMarkers';
 
-import { MapProps } from './interfaces';
+import { MapProps, IMarker } from './interfaces';
 
 const Map: React.FC<MapProps> = ({
   height,
@@ -14,7 +15,7 @@ const Map: React.FC<MapProps> = ({
   setPoint,
   latitude,
   longitude,
-  zoom
+  zoom,
 }) => {
   const [viewport, setViewport] = useState({
     height,
@@ -24,7 +25,19 @@ const Map: React.FC<MapProps> = ({
     zoom,
   });
 
-  console.log(longitude, latitude)
+  const [markers, setMarkers] = useState<IMarker[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    const requestData = async () => {
+      setLoading(true);
+      const response = await getMarkers();
+      setLoading(false);
+      setMarkers(response);
+    };
+
+    requestData();
+  }, []);
 
   useEffect(() => {
     setViewport({ ...viewport, height, width });
@@ -37,7 +50,7 @@ const Map: React.FC<MapProps> = ({
   const MemorizedMarkers = useMemo(() => {
     return (
       <>
-        {data_mock.map((marker) => (
+        {markers.map((marker) => (
           <Marker longitude={marker.lng} latitude={marker.lat}>
             <RestOutlined
               onClick={() => setPoint(marker)}
@@ -50,9 +63,23 @@ const Map: React.FC<MapProps> = ({
         ))}
       </>
     );
-  }, [data_mock]);
+  }, [markers]);
 
   if (height <= 0) return <></>;
+  if (loading)
+    return (
+      <div
+        style={{
+          height: '100%',
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Loading type="spokes" color="green" />
+      </div>
+    );
 
   return (
     <ReactMapGL
