@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 
 import Header from '../../components/Header';
-import Content from '../../components/Content';
+import Content from '../../components/ContentDefault';
 import PageDefault from '../../components/PageDefault';
 import homeConst from '../../mocks/home_const.json';
 import { TextArea } from './styles';

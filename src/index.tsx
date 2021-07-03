@@ -9,6 +9,7 @@ import LocationContext from './data/contexts/CollectionPoint';
 import Home from './pages/Home';
 import ColletionPoints from './pages/CollectionPoints';
 import NotFound from './pages/NotFound';
+import AddCollectionPoint from './pages/AddCollectPoint';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -20,6 +21,9 @@ ReactDOM.render(
           <LocationContext>
             <ColletionPoints />
           </LocationContext>
+        </Route>
+        <Route path="/create-point" exact>
+          <AddCollectionPoint />
         </Route>
         <Route component={NotFound} />
       </Switch>

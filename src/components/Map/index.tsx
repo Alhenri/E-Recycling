@@ -10,12 +10,12 @@ import getMarkers from './api/getMarkers';
 import { MapProps, IMarker } from './interfaces';
 
 const Map: React.FC<MapProps> = ({
-  height,
-  width,
   setPoint,
   latitude,
   longitude,
   zoom,
+  mapClick,
+  newPointer,
 }) => {
   const [viewport, setViewport] = useState({
     latitude,
@@ -34,7 +34,9 @@ const Map: React.FC<MapProps> = ({
       setMarkers(response);
     };
 
-    requestData();
+    if (!mapClick) {
+      requestData();
+    }
   }, []);
 
   useEffect(() => {
@@ -45,9 +47,16 @@ const Map: React.FC<MapProps> = ({
     return (
       <>
         {markers.map((marker) => (
-          <Marker longitude={marker.lng} latitude={marker.lat}>
+          <Marker
+            longitude={marker.lng}
+            latitude={marker.lat}
+            offsetTop={-10}
+            offsetLeft={-10}
+          >
             <RestOutlined
-              onClick={() => setPoint(marker)}
+              onClick={() => {
+                if (setPoint) setPoint(marker);
+              }}
               style={{
                 color: 'green',
                 fontSize: '20px',
@@ -59,7 +68,6 @@ const Map: React.FC<MapProps> = ({
     );
   }, [markers]);
 
-  if (height <= 0) return <></>;
   if (loading)
     return (
       <div
@@ -82,9 +90,27 @@ const Map: React.FC<MapProps> = ({
       width="100%"
       mapboxApiAccessToken={env.MAP_TOKEN}
       onViewportChange={setViewport}
+      onClick={(evnt) => {
+        if (mapClick) mapClick(evnt);
+      }}
       mapStyle="mapbox://styles/sonero/ckj1lyxwt0y5019p8bmgn205w"
     >
       {viewport.zoom > 6 && MemorizedMarkers}
+      {newPointer && newPointer.lat && newPointer.lng && (
+        <Marker
+          longitude={newPointer.lng}
+          latitude={newPointer.lat}
+          offsetTop={-10}
+          offsetLeft={-10}
+        >
+          <RestOutlined
+            style={{
+              color: 'green',
+              fontSize: '20px',
+            }}
+          />
+        </Marker>
+      )}
     </ReactMapGL>
   );
 };

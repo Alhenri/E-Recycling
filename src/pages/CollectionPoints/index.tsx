@@ -3,7 +3,7 @@ import { HomeOutlined, RestOutlined } from '@ant-design/icons';
 
 import Map from '../../components/Map';
 import PageDefault from '../../components/PageDefault';
-import Content from '../../components/Content';
+import Content from '../../components/ContentDefault';
 import { GlobalContext, LocationContext } from '../../data/contexts';
 import getLocal from '../../services/getLocal';
 
@@ -36,8 +36,6 @@ const CollectionPoints: React.FC = () => {
         <Container>
           <MapContainer className="map-area">
             <Map
-              width={width / 2}
-              height={height}
               setPoint={setPoint}
               latitude={location.position.lat}
               longitude={location.position.lng}
