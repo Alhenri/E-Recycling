@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useMemo, useCallback } from 'react';
 import { HomeOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { PointerEvent } from 'react-map-gl';
 
 import { GlobalContext } from '../../data/contexts';
@@ -18,16 +18,32 @@ import { FormType } from './interfaces';
 import postData from './api';
 
 const AddCollectPoint: React.FC = () => {
+  const history = useHistory();
   const {
     context: { height, width },
   } = useContext(GlobalContext);
 
   const [form, setForm] = useState<FormType>({});
 
-  const onMapClick = (evnt: PointerEvent) => {
-    const { lngLat } = evnt;
-    setForm({ ...form, lng: lngLat[0], lat: lngLat[1] });
-  };
+  const onMapClick = useCallback(
+    (evnt: PointerEvent) => {
+      const { lngLat } = evnt;
+      setForm({ ...form, lng: lngLat[0], lat: lngLat[1] });
+    },
+    [form]
+  );
+
+  const MemorizedMap = useMemo(() => {
+    return (
+      <Map
+        latitude={0}
+        longitude={0}
+        zoom={4}
+        mapClick={onMapClick}
+        newPointer={{ lat: form.lat, lng: form.lng }}
+      />
+    );
+  }, [form.lat, form.lng, onMapClick]);
 
   return (
     <PageDefault>
@@ -43,17 +59,10 @@ const AddCollectPoint: React.FC = () => {
       </Link>
       <Content height={0.8 * height} width={0.8 * width} marginTop={0}>
         <Container>
-          <MapContainer className="map-area">
-            <Map
-              latitude={0}
-              longitude={0}
-              zoom={4}
-              mapClick={onMapClick}
-              newPointer={{ lat: form.lat, lng: form.lng }}
-            />
-          </MapContainer>
+          <MapContainer className="map-area">{MemorizedMap}</MapContainer>
           <div className="form-area">
             <h2>Dados no novo ponto de coleta</h2>
+            <img src={form.image} alt="Not found" loading="lazy" />
             <FormContainer>
               <Input
                 required
@@ -97,7 +106,12 @@ const AddCollectPoint: React.FC = () => {
                   form.time
                 ) {
                   postData(form);
-                  setForm({});
+                  setForm({
+                    time: '',
+                    image: '',
+                    name: '',
+                  });
+                  history.push('/');
                 } else {
                   window.alert('Formulário incorreto');
                 }

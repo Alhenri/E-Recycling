@@ -16,25 +16,39 @@ export const Container = styled.div`
   }
 
   .form-area {
+    padding: 15px 10px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
+
+    img {
+      max-width: 50%;
+      max-height: 50%;
+    }
+
+    @media (max-width: 505px){
+      font-size: 12px;
+      h2{
+        font-size: 16px;
+      }
+    }
   }
 `;
 
 export const MapContainer = styled.div``;
 
 export const FormContainer = styled.div`
-  height: 200px;
+  max-height: 200px;
+  width: 80%;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
 `;
 
 export const Input = styled.input`
-  height: 35px;
-  width: 300px;
-  margin: auto;
+  max-height: 35px;
+  width: 100%;
+  margin: 5px 0;
 
   border-radius: 15px;
   border: none;
@@ -43,17 +57,17 @@ export const Input = styled.input`
 `;
 
 export const SubmitButton = styled.button`
-  height: 35px;
-  width: 200px;
+  max-height: 35px;
+  max-width: 200px;
 
   border-radius: 15px;
   border: none;
   padding: 0 15px;
   outline: 0;
 
-  background-color: #9DB060;
+  background-color: #9db060;
   transition: 0.2s;
-  :hover{
-    background-color: #dDf060;
+  :hover {
+    background-color: #ddf060;
   }
 `;
